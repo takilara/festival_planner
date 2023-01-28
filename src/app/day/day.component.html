@@ -1,0 +1,11 @@
+<div class="app daycontainer day">
+    <div class="app daycontainer day dayofweek">{{dayOfWeek}}</div>
+    <div class="app daycontainer day venues">
+        <app-venue
+        *ngFor="let venueN of venues"
+        [venueName]='venueN'
+        [dayOfWeek]='dayOfWeek'
+        >
+        ></app-venue>
+    </div>
+</div>

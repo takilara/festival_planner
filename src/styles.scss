@@ -1,1 +1,280 @@
-/* You can add global styles to this file, and also import other style files */
+$dayheaderheight: 30px;
+$venueheaderheight: 30px;
+$timeheaderheight: $dayheaderheight+$venueheaderheight+2;
+$background-color-venues: black;
+
+html,
+body {
+  //display: flex;
+    height: 100%;
+  margin: 0;
+  background-color: aqua;
+}
+
+
+
+#application {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+// .application .row {
+//   border: 1px dotted grey;
+// }
+
+#application .app.header {
+  display: flex;
+  flex-grow: 0; // dont grow
+  flex-shrink: 1; // but you can shrink
+  flex-basis: 50px; // max height 
+  align-items: center; // center align text (vertical)
+  justify-content: center; // center align text (horizontal)
+
+  font-weight: bold;
+  font-size: x-large;
+
+  padding: 0px;
+  margin: 0px;
+  //border: 1px solid black;
+  background-color: white;
+}
+
+app-day {
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    //padding: 40px;
+    border: 1px solid black;
+}
+
+app-venue {
+    background-color: rgb(160, 9, 9);
+    display:flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    border: 1px solid red;
+}
+
+app-time {
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    border: 1px solid black;
+    //padding: 40px;
+}
+
+app-concert {
+    //position: absolute;
+    //position: relative;
+    //background-color: rgb(45, 18, 201);
+    //display:block;
+    //border: 1px solid black;
+    //height: 0px;
+    //top: 1000px;
+    //background-color: $background-color-venues;
+ 
+    
+}
+
+.venue-component { // works
+    //background-color: rgb(41, 207, 26);
+    background-color: $background-color-venues;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; // dont grow as we are an item that is column aligned
+    //flex-shrink: 1; // but you can shrink
+    //flex-basis: 40px; // max height  // doesnt work
+    color:rgb(188, 203, 194);
+    font-size: small;
+}
+
+.concertEntry {
+    position: relative;
+    background-color: rgb(45, 18, 201);
+    border: 1px solid green;
+}
+
+
+#application .app.contentcontainer {
+    display: flex;
+    background-color: rgb(25, 158, 76);
+    flex-direction: row; 
+    flex: 1 1 auto;
+    //padding: 20px;
+}
+
+#application .app.timecontainer {
+    display: flex;
+    background-color: rgb(25, 158, 76);
+    flex-direction: column; 
+    flex: 0 1 70px;
+    //padding: 20px;
+}
+
+
+#application .app.daycontainer {
+    display: flex;
+    background-color: rgb(25, 158, 76);
+    flex-direction: row; 
+    flex: 1 1 auto;
+    //padding: 20px;
+}
+
+
+
+#application .app.daycontainer.day {
+    background-color: rgb(188, 203, 194);
+    //border: 1px solid black;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+#application .app.daycontainer.time {
+    background-color: rgb(189, 188, 203);
+    //border: 1px solid black;
+    
+    display: flex;
+    flex: 1 1 40px;
+    flex-direction: column;
+}
+
+#application .app.daycontainer.time.blank {
+    display: flex;
+  flex-grow: 0; // dont grow
+  flex-shrink: 1; // but you can shrink
+  flex-basis: $timeheaderheight; // max height -- should be sum of dayofweek header and venueheader
+  align-items: center; // center align text (vertical)
+  justify-content: center; // center align text (horizontal)
+
+  font-weight: bold;
+  font-size: x-large;
+
+  padding: 0px;
+  margin: 0px;
+  //border: 1px solid black;
+  background-color: white;
+}
+
+#application .app.daycontainer.time.times {
+    background-color: rgb(189, 188, 203);
+    //border: 1px solid black;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+#application .app.daycontainer.time.times.hour {
+    background-color:  rgb(160, 9, 9);
+    border: 1px solid gray;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+#application .footer {
+    display: flex;
+    flex-grow: 0; // dont grow cross axis
+    flex-shrink: 1; // but you can shrink
+    flex-basis: 20px; // max height 
+    align-items: center; // center align text (vertical)
+    justify-content: center; // center align text (horizontal)
+  
+    //font-weight: bold;
+    font-size: small;
+  
+    padding: 0px;
+    margin: 0px;
+    //border: 1px solid black;
+    background-color: rgb(159, 121, 121);
+  }
+
+
+
+// #application .app.content.day {
+//     display: flex;
+//     background-color: rgb(179, 171, 177);
+//     flex-direction: column; // align own contents downwards
+//     //flex-flow: row;
+//     flex: 1 1 auto;
+//     //flex-grow: 1; // fill cross axis (width)
+//     //flex-basis: auto;
+//     border: 1px solid rgb(69, 209, 22); // works
+//     //text-align: center; // doesnt work
+//     //width: 100%;
+//     //flex: 1;
+// }
+
+#application .app.daycontainer.day.dayofweek {
+    background-color: rgb(152, 136, 136);
+    //display: flex;
+    flex-grow: 0; // dont grow as we are an item that is column aligned
+    // flex-shrink: 1; // but you can shrink
+    flex-basis: $dayheaderheight; // max height 
+    align-items: center; // center align text (vertical)
+    justify-content: center; // center align text (horizontal)
+  
+    font-weight: bold;
+    font-size: large;
+  
+    //padding: 0px;
+    //margin: 0px;
+}
+
+#application .app.daycontainer.day.venues {
+    // Container containing venues
+    background-color: rgb(28, 33, 163);
+    display: flex;
+    flex-grow: 1; // grow
+    flex-shrink: 1; // and shrink as needed
+    flex-basis: auto; // max height 
+    flex-direction: row;
+  
+    font-weight: bold;
+    font-size: large;
+  
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+.venue-component .header { 
+    background-color: rgb(68, 26, 207);
+    display: flex;
+    flex-grow: 0; // dont grow as we are an item that is column aligned
+    //flex-shrink: 1; // but you can shrink
+    flex-basis: $venueheaderheight; // max height  // doesnt work
+    align-items: center; // center align text (vertical)
+    justify-content: center; // center align text (horizontal)
+    border:1px solid black; // doesnt work
+    font-weight: bold;
+    font-size: large;
+  
+    //padding: 0px;
+    //margin: 0px;
+}
+
+.venue-component .concerts { 
+    // works, this seem to define the 
+    //background-color: $background-color-venues;
+    //color:rgb(188, 203, 194);
+    //display: flex;
+    //flex-grow: 1; // allow to grow to full
+    //flex-shrink: 1; // but you can shrink
+    //flex-basis: 40px; // max height  // doesnt work
+    //align-items: center; // center align text (vertical)
+    //justify-content: center; // center align text (horizontal)
+    // color:rgb(188, 203, 194);
+    // font-size: small;
+  
+    //padding: 0px;
+    //margin: 0px;
+}
+
+
+
+

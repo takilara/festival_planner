@@ -1,0 +1,10 @@
+<div class="venue-component">
+    <div class="header">{{venueName?.name}}</div>
+    <div class="concerts" id="venue-{{venueName}}-{{dayOfWeek}}" #venue>
+        <app-concert
+         *ngFor="let concert of concerts"
+         [concert]='concert'
+        ></app-concert>
+    </div>
+</div>
+
