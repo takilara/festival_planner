@@ -1,7 +1,10 @@
 <div class="app daycontainer time">
     <div class="app daycontainer time blank">time</div>
-    <div class="app daycontainer time times">
-        <div class="app daycontainer time times hour">08:00</div>
-        <div class="app daycontainer time times hour">09:00</div>
+    <div class="app daycontainer time times" id="hourColumn" #hourColumn>
+        <app-hour-marker
+        *ngFor="let marker of markers"
+         [marker]='marker'
+         [style.height.px]="marker?.height"
+        ></app-hour-marker>
     </div>
 </div>

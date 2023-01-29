@@ -66,6 +66,21 @@ app-time {
     //padding: 40px;
 }
 
+app-hour-marker {
+    position: relative;
+    align-items: center; // center align text (vertical)
+    justify-content: center; // center align text (horizontal)
+    vertical-align: middle;
+    border: 1px solid red;
+    display: flex;
+
+}
+
+.hourMarkerLine {
+    position: absolute;
+    background-color: red;
+}
+
 app-concert {
     //position: absolute;
     //position: relative;
@@ -95,6 +110,18 @@ app-concert {
     position: relative;
     background-color: rgb(45, 18, 201);
     border: 1px solid green;
+}
+
+.hourMarker {
+    // position: relative;
+    // border: 1px solid red;
+    // align-items: center; // center align text (vertical)
+    // justify-content: center; // center align text (horizontal)
+    // background-color: bisque;
+
+    // align-items: center; // center align text (vertical)
+    // justify-content: center; // center align text (horizontal)
+    // vertical-align: middle;
 }
 
 
@@ -162,9 +189,9 @@ app-concert {
 #application .app.daycontainer.time.times {
     background-color: rgb(189, 188, 203);
     //border: 1px solid black;
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
+    //display: block;
+    //flex: 1 1 auto;
+    //flex-direction: column;
 }
 
 #application .app.daycontainer.time.times.hour {

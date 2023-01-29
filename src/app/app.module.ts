@@ -7,6 +7,7 @@ import { DayComponent } from './day/day.component';
 import { VenueComponent } from './venue/venue.component';
 import { TimeComponent } from './time/time.component';
 import { ConcertComponent } from './concert/concert.component';
+import { HourMarkerComponent } from './hour-marker/hour-marker.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ConcertComponent } from './concert/concert.component';
     DayComponent,
     VenueComponent,
     TimeComponent,
-    ConcertComponent
+    ConcertComponent,
+    HourMarkerComponent
   ],
   imports: [
     BrowserModule,

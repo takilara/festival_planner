@@ -23,6 +23,20 @@ export class DataService {
     return CONCERTS;
   }
 
+  public getFirstAndLastHourForAFestivalDay(festival_id:string, date:string) {
+    // return object that contains first and last hour for a date
+    // Note, some concerts need to be shown on the day before
+    // Harcoding this for now:
+    var firstAndLastHour = {
+      "firstHour": 12,
+      "lastHour": 2,
+      "hours":14
+    }
+    return firstAndLastHour;
+  }
+
+  
+
   public getBand(bandId:string|undefined) {
     // force running of getBands first...
     this.getBands();
