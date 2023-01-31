@@ -8,4 +8,5 @@ import { HourMarkers } from '../time/time.component';
 })
 export class HourMarkerComponent {
   @Input("marker") marker?:HourMarkers; 
+  @Input("height") height:number=-1;
 }
