@@ -67,7 +67,7 @@ app-time {
 }
 
 app-hour-marker {
-    position: relative;
+    position: absolute;
     align-items: center; // center align text (vertical)
     justify-content: center; // center align text (horizontal)
     vertical-align: middle;
@@ -77,7 +77,7 @@ app-hour-marker {
 }
 
 .hourMarkerLine {
-    position: absolute;
+    //position: absolute;
     background-color: red;
 }
 
@@ -188,6 +188,7 @@ app-concert {
 
 #application .app.daycontainer.time.times {
     background-color: rgb(189, 188, 203);
+    position: relative;
     //border: 1px solid black;
     //display: block;
     //flex: 1 1 auto;

@@ -5,6 +5,8 @@
         *ngFor="let marker of markers"
          [marker]='marker'
          [style.height.px]="marker?.height"
+         [style.width.px]="marker?.width"
+         [style.top.px]="marker?.top"
         ></app-hour-marker>
     </div>
 </div>
