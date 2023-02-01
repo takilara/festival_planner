@@ -8,6 +8,8 @@ import { VENUES, BANDS, CONCERTS } from './mock-data';
 export class DataService {
   bands:Band[]=[];
 
+  public canvasWidth:number = -1;
+
   constructor() { }
 
   public getVenues():Venue[] {

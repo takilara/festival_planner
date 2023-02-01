@@ -1,12 +1,14 @@
-import { Component, OnInit, ElementRef, ViewChild, ViewChildren, ViewContainerRef, AfterViewInit, NgZone, OnDestroy, QueryList, Directive } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewChildren, ViewContainerRef, HostListener, AfterViewInit, NgZone, OnDestroy, QueryList, Directive } from '@angular/core';
 import { DataService } from '../data.service';
 import { HourMarkerComponent } from '../hour-marker/hour-marker.component';
 
-export interface HourMarkers {
+export interface HourMarker {
   hour: number;
   height: number;
   width: number;
   top: number;
+  lineTop: number;
+  lineWidth: number;
 }
 
 @Directive({selector: "marker"})
@@ -20,7 +22,8 @@ class ChildDirective {}
 
 export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('hourColumn') elementView?: ElementRef;
-  @ViewChild('marker1') hour1?: ElementRef;
+  //@ViewChild('marker1') hour1?: ElementRef;
+  @ViewChild('daycontainer') dayContainer: ElementRef<HTMLInputElement> = {} as ElementRef;
 
   //@ViewChildren('comp', { read: ViewContainerRef });
   //public dynComponents?: QueryList<ViewContainerRef>;
@@ -28,8 +31,10 @@ export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
 
   contentHeight:number = -1;
   contentWidth:number = -1;
-  markers:HourMarkers[] = [];
-  observer?:ResizeObserver;
+  markers:HourMarker[] = [];
+  //observer?:ResizeObserver;
+  spacing:number=-1;
+  lineWidth: number = -1;
 
   constructor(
     private dataService: DataService,
@@ -40,9 +45,18 @@ export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
   reCalculateScaling() {
     this.contentHeight = this.elementView?.nativeElement.offsetHeight;
     this.contentWidth = this.elementView?.nativeElement.offsetWidth;
-    console.log("Content Height: ",this.contentHeight);
+    //this.lineWidth =  window.innerWidth - this.contentWidth - 10;
+    this.lineWidth = this.dataService.canvasWidth - 10;
+    //this.lineWidth =  this.dayContainer.nativeElement.offsetWidth - this.contentWidth - 10;
+    if(this.lineWidth<0) {
+      this.lineWidth = window.innerWidth;
+    }
+    console.log("Canvas Width:",this.dataService.canvasWidth);
+    console.log("line width",this.lineWidth);
+    //console.log(this.dayContainer);
+    //console.log("Content Height: ",this.contentHeight);
     var firstAndLast = this.dataService.getFirstAndLastHourForAFestivalDay("1","2023-05-04"); // need to wrap this or something, maybe allow service to determine shown days
-    var spacing = this.contentHeight/firstAndLast.hours;
+    this.spacing = this.contentHeight/firstAndLast.hours;
 
     let theHour = firstAndLast.firstHour;
     //this.markers=[];
@@ -54,9 +68,11 @@ export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
         this.markers.push(
           {
             "hour": theHour,
-            "height": spacing,
+            "height": this.spacing,
             "width": this.contentWidth,
-            "top": spacing * i
+            "top": this.spacing * i,
+            "lineTop": (this.spacing * i) + (this.spacing/2),
+            "lineWidth": this.lineWidth
           }
         );
       }
@@ -68,7 +84,7 @@ export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
       // The above does not seem to work, maybe the markers are immutable
 
       // Alternatively. loop over hours, and use viewchild to get the markers
-      console.log("Recalculate..")
+      //console.log("Recalculate..")
       
       // for(let i = 0; i< firstAndLast.hours; i++)
       // {
@@ -76,8 +92,24 @@ export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
       //   if(theHour>=24) { theHour = theHour - 24; }
       // }
       //console.log(this.dynComponents);
-      console.log(this.viewChildren.length);
-      console.log(this.viewChildren);
+      //console.log(this.viewChildren.length);
+      //console.log(this.viewChildren);
+
+      let i = 0;
+      this.viewChildren.forEach(c=> {
+        
+        let marker:HourMarker = {
+               "height":this.spacing,
+               "top":this.spacing*i,
+               "width": this.contentWidth,
+               "hour": c.marker.hour,
+               "lineTop": (this.spacing * i) + (this.spacing/2),
+               "lineWidth": this.lineWidth
+             }
+        c.rescale(marker);
+        i += 1;
+      });
+
 
       // the below doesnt work, but "viewChildren" now actually contains the correct referances
       // this.viewChildren.forEach(c=> {
@@ -97,24 +129,33 @@ export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Detect rescaling
-    this.observer = new ResizeObserver(entries => {
-      this.zone.run(() => {
-        //this.width = entries[0].contentRect.width;
-        //const height = entries[0].contentRect.height;
-        //console.log(entries[0].contentRect, height);
-        this.reCalculateScaling();
-      });
-    });
-    this.observer.observe(this.host.nativeElement);
+    // this.observer = new ResizeObserver(entries => {
+    //   this.zone.run(() => {
+    //     //this.width = entries[0].contentRect.width;
+    //     //const height = entries[0].contentRect.height;
+    //     //console.log(entries[0].contentRect, height);
+    //     //this.reCalculateScaling();
+    //   });
+    // });
+    // this.observer.observe(this.host.nativeElement);
     //this.reCalculateScaling();
     
   }
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event:Event) {
+    //console.log(window.innerWidth);
+    this.reCalculateScaling();
+  }
+
 
   ngAfterViewInit() {
     // runs after rendering, might not be needed
     this.reCalculateScaling();
 
     console.log(this.viewChildren);
+    console.log(this.dayContainer);
     
 
 
@@ -124,8 +165,8 @@ export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.observer?.unobserve(this.host.nativeElement);
-    this.observer?.disconnect();
+    // this.observer?.unobserve(this.host.nativeElement);
+    // this.observer?.disconnect();
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="hourMarker" >
-    <span class="hourMarkerHour">{{marker?.hour}}</span>
+    <span class="hourMarkerHour">{{marker.hour | number:'2.0' }}:00</span>
     <span class="hourMarkerLine"
-    [style.top.px]="marker?.top"
-    >---</span>
+    [style.top.px]="marker.top"
+    ></span>
 </div>

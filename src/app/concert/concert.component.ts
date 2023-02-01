@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Concert, Band, BandConcerts } from '../data.models';
 import { DataService } from '../data.service';
 
+
 @Component({
   selector: 'app-concert',
   templateUrl: './concert.component.html',

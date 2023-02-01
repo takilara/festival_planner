@@ -8,6 +8,9 @@ import { VenueComponent } from './venue/venue.component';
 import { TimeComponent } from './time/time.component';
 import { ConcertComponent } from './concert/concert.component';
 import { HourMarkerComponent } from './hour-marker/hour-marker.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDividerModule} from '@angular/material/divider';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,10 +20,13 @@ import { HourMarkerComponent } from './hour-marker/hour-marker.component';
     TimeComponent,
     ConcertComponent,
     HourMarkerComponent
+    //MatDividerModule
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

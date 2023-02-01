@@ -1,4 +1,4 @@
-import { Component,ViewChild,ElementRef, OnInit  } from '@angular/core';
+import { Component,ViewChild,ElementRef, OnInit, AfterViewInit, HostListener  } from '@angular/core';
 import { Venue } from './data.models';
 import { DataService } from './data.service';
 
@@ -8,10 +8,12 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   
   @ViewChild("venue") venue: ElementRef<HTMLInputElement> = {} as ElementRef;
-    getValue() {
+  @ViewChild("daycontainer") dayContainer: ElementRef<HTMLInputElement> = {} as ElementRef;
+  
+  getValue() {
     console.log(this.venue);
     console.log("running getValue");
     this.venue.nativeElement.innerHTML = "I am changed by ElementRef & ViewChild";
@@ -29,6 +31,19 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.getVenues();
+  }
+
+  ngAfterViewInit(): void {
+      console.log("container width",this.dayContainer.nativeElement.offsetWidth)
+      this.dataService.canvasWidth = this.dayContainer.nativeElement.offsetWidth;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event:Event) {
+    //console.log(window.innerWidth);
+    this.dataService.canvasWidth = this.dayContainer.nativeElement.offsetWidth;
+    console.log("Setting canvas with to: ", this.dayContainer.nativeElement.offsetWidth);
+    console.log("New canvas width: ", this.dataService.canvasWidth);
   }
 
   days = [

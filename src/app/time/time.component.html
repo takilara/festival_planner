@@ -1,13 +1,20 @@
 <div class="app daycontainer time">
-    <div class="app daycontainer time blank">time</div>
+    <div class="app daycontainer time blank"></div>
     <div class="app daycontainer time times" id="hourColumn" #hourColumn>
         <app-hour-marker
-        *ngFor="let marker of markers"
-         [marker]='marker'
-         [style.height.px]="marker?.height"
-         [style.width.px]="marker?.width"
-         [style.top.px]="marker?.top"
-         #marker
+            *ngFor="let marker of markers"
+            [marker]='marker'
+            [style.height.px]="marker?.height"
+            [style.width.px]="marker?.width"
+            [style.top.px]="marker?.top"
+            #marker
         ></app-hour-marker>
+        <mat-divider class="divider"
+        *ngFor="let marker of markers"
+        [style.top.px]="marker?.lineTop"
+        [style.width.px]="marker?.lineWidth"
+        [style.left.px]="marker!.width+5"
+         #divider></mat-divider>
+
     </div>
 </div>

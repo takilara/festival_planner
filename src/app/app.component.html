@@ -4,7 +4,7 @@
     <div class="app timecontainer">
         <app-time></app-time>  
     </div>
-    <div class="app daycontainer">
+    <div class="app daycontainer" id="daycontainer" #daycontainer>
         <app-day 
         *ngFor="let dayOfWeek of days"
         [dayOfWeek]='dayOfWeek'

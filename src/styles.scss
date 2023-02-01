@@ -8,7 +8,7 @@ body {
   //display: flex;
     height: 100%;
   margin: 0;
-  background-color: aqua;
+  //background-color: aqua;
 }
 
 
@@ -41,12 +41,12 @@ body {
 }
 
 app-day {
-    background-color: white;
+    //background-color: white;
     display:flex;
     flex-direction: column;
     flex: 1 1 auto;
     //padding: 40px;
-    border: 1px solid black;
+    //border: 1px solid black;
 }
 
 app-venue {
@@ -54,7 +54,8 @@ app-venue {
     display:flex;
     flex-direction: column;
     flex: 1 1 auto;
-    border: 1px solid red;
+    border: 1px solid red;  // governs border around the venue
+    margin: 0px;
 }
 
 app-time {
@@ -62,8 +63,9 @@ app-time {
     display:flex;
     flex-direction: column;
     flex: 1 1 auto;
-    border: 1px solid black;
+    //border: 1px solid black;
     //padding: 40px;
+    
 }
 
 app-hour-marker {
@@ -71,15 +73,13 @@ app-hour-marker {
     align-items: center; // center align text (vertical)
     justify-content: center; // center align text (horizontal)
     vertical-align: middle;
-    border: 1px solid red;
+    //border: 1px solid red;
+    //background-color: white;
     display: flex;
 
 }
 
-.hourMarkerLine {
-    //position: absolute;
-    background-color: red;
-}
+
 
 app-concert {
     //position: absolute;
@@ -107,27 +107,17 @@ app-concert {
 }
 
 .concertEntry {
+    // TODO: Move this to the app-concert
     position: relative;
     background-color: rgb(45, 18, 201);
     border: 1px solid green;
-}
-
-.hourMarker {
-    // position: relative;
-    // border: 1px solid red;
-    // align-items: center; // center align text (vertical)
-    // justify-content: center; // center align text (horizontal)
-    // background-color: bisque;
-
-    // align-items: center; // center align text (vertical)
-    // justify-content: center; // center align text (horizontal)
-    // vertical-align: middle;
+    border-radius: 5px;
 }
 
 
 #application .app.contentcontainer {
     display: flex;
-    background-color: rgb(25, 158, 76);
+    //background-color: rgb(25, 158, 76);
     flex-direction: row; 
     flex: 1 1 auto;
     //padding: 20px;
@@ -144,7 +134,7 @@ app-concert {
 
 #application .app.daycontainer {
     display: flex;
-    background-color: rgb(25, 158, 76);
+    //background-color: rgb(25, 158, 76);
     flex-direction: row; 
     flex: 1 1 auto;
     //padding: 20px;
@@ -153,7 +143,7 @@ app-concert {
 
 
 #application .app.daycontainer.day {
-    background-color: rgb(188, 203, 194);
+    //background-color: rgb(188, 203, 194);
     //border: 1px solid black;
     display: flex;
     flex: 1 1 auto;
@@ -161,6 +151,8 @@ app-concert {
 }
 
 #application .app.daycontainer.time {
+    // governs left hand side time column
+    // set background color here
     background-color: rgb(189, 188, 203);
     //border: 1px solid black;
     
@@ -170,6 +162,7 @@ app-concert {
 }
 
 #application .app.daycontainer.time.blank {
+    // giverns the left column
     display: flex;
   flex-grow: 0; // dont grow
   flex-shrink: 1; // but you can shrink
@@ -183,11 +176,11 @@ app-concert {
   padding: 0px;
   margin: 0px;
   //border: 1px solid black;
-  background-color: white;
+  //background-color: rgb(146, 41, 41);
 }
 
 #application .app.daycontainer.time.times {
-    background-color: rgb(189, 188, 203);
+    //background-color: rgb(29, 17, 198);
     position: relative;
     //border: 1px solid black;
     //display: block;
@@ -197,7 +190,7 @@ app-concert {
 
 #application .app.daycontainer.time.times.hour {
     background-color:  rgb(160, 9, 9);
-    border: 1px solid gray;
+    //border: 1px solid rgb(78, 3, 254);
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -221,6 +214,18 @@ app-concert {
   }
 
 
+.divider {
+    position: absolute;
+    // width: 100vh;
+    height: 0px;
+    // top: 50%;
+    //left: 100%;
+    color:rgb(25, 158, 76);
+    border: 0px dashed rgba(135, 135, 135, 0.418);
+    //background-color: gray;
+    z-index: 100;
+}
+
 
 // #application .app.content.day {
 //     display: flex;
@@ -237,7 +242,7 @@ app-concert {
 // }
 
 #application .app.daycontainer.day.dayofweek {
-    background-color: rgb(152, 136, 136);
+    //background-color: rgb(152, 136, 136);
     //display: flex;
     flex-grow: 0; // dont grow as we are an item that is column aligned
     // flex-shrink: 1; // but you can shrink
@@ -250,6 +255,12 @@ app-concert {
   
     //padding: 0px;
     //margin: 0px;
+    //border: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    padding: 0px;
+    margin: 0px;
+    
 }
 
 #application .app.daycontainer.day.venues {
@@ -278,7 +289,7 @@ app-concert {
     flex-basis: $venueheaderheight; // max height  // doesnt work
     align-items: center; // center align text (vertical)
     justify-content: center; // center align text (horizontal)
-    border:1px solid black; // doesnt work
+    //border:1px solid black; // doesnt work
     font-weight: bold;
     font-size: large;
   
@@ -306,3 +317,6 @@ app-concert {
 
 
 
+
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
