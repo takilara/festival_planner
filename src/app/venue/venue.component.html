@@ -2,8 +2,10 @@
     <div class="header">{{venueName?.name}}</div>
     <div class="concerts" id="venue-{{venueName}}-{{dayOfWeek}}" #venue>
         <app-concert
-         *ngFor="let concert of concerts"
+         *ngFor="let concert of concertElements"
          [concert]='concert'
+         [style.height.px]="concert.height"
+         [style.top.px]="concert.top"
         ></app-concert>
     </div>
 </div>

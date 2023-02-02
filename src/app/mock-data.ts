@@ -85,8 +85,8 @@ export const CONCERTS: Concert[] = [
     { id: "1", festival_id:"1", band_id: "26", venue_id: "2", date:"2023-05-05", start_time: "21:30", duration: 60, day:"Friday" },
     { id: "1", festival_id:"1", band_id: "27", venue_id: "2", date:"2023-05-05", start_time: "18:40", duration: 60, day:"Friday" },
     { id: "1", festival_id:"1", band_id: "28", venue_id: "2", date:"2023-05-05", start_time: "14:15", duration: 60, day:"Friday" },
-    { id: "1", festival_id:"1", band_id: "29", venue_id: "2", date:"2023-05-05", start_time: "13:10", duration: 60, day:"Friday" },
-    { id: "1", festival_id:"1", band_id: "30", venue_id: "2", date:"2023-05-05", start_time: "12:15", duration: 60, day:"Friday" },
+    { id: "1", festival_id:"1", band_id: "29", venue_id: "2", date:"2023-05-05", start_time: "13:10", duration: 45, day:"Friday" },
+    { id: "1", festival_id:"1", band_id: "30", venue_id: "2", date:"2023-05-05", start_time: "12:15", duration: 45, day:"Friday" },
     //Saturday - Gassco
     { id: "1", festival_id:"1", band_id: "31", venue_id: "1", date:"2023-05-06", start_time: "23:30", duration: 60, day:"Saturday" },
     { id: "1", festival_id:"1", band_id: "32", venue_id: "1", date:"2023-05-06", start_time: "21:45", duration: 60, day:"Saturday" },

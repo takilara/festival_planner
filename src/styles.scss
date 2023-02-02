@@ -82,7 +82,12 @@ app-hour-marker {
 
 
 app-concert {
-    //position: absolute;
+    position: absolute;
+    
+    background-color: rgb(45, 18, 201);
+    border: 1px solid green;
+    border-radius: 5px;
+    width:99%;
     //position: relative;
     //background-color: rgb(45, 18, 201);
     //display:block;
@@ -96,6 +101,7 @@ app-concert {
 
 .venue-component { // works
     //background-color: rgb(41, 207, 26);
+    position: relative;
     background-color: $background-color-venues;
     display: flex;
     flex-direction: column;
@@ -108,10 +114,10 @@ app-concert {
 
 .concertEntry {
     // TODO: Move this to the app-concert
-    position: relative;
-    background-color: rgb(45, 18, 201);
-    border: 1px solid green;
-    border-radius: 5px;
+    // position: relative;
+    // background-color: rgb(45, 18, 201);
+    // border: 1px solid green;
+    // border-radius: 5px;
 }
 
 
@@ -299,6 +305,7 @@ app-concert {
 
 .venue-component .concerts { 
     // works, this seem to define the 
+    position: relative;
     //background-color: $background-color-venues;
     //color:rgb(188, 203, 194);
     //display: flex;

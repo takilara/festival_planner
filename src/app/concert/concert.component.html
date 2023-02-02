@@ -1,7 +1,4 @@
-<div class="concertEntry" id="concert-{{concert?.id}}"
-[style.height.px]="height"
-[style.top.px]="top"
->
-    <p>Band:{{band?.name}}</p>
-    <p>Id:{{concert?.id}}</p>
+<div class="concertEntry" id="concert-{{concert?.concert?.id}}">
+    <p>{{concert!.concert!.start_time}} {{band?.name}}</p>
+    <!-- <p>Id:{{concert?.id}}</p> -->
 </div>

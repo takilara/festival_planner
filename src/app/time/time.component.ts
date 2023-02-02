@@ -57,8 +57,14 @@ export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
     //console.log("Content Height: ",this.contentHeight);
     var firstAndLast = this.dataService.getFirstAndLastHourForAFestivalDay("1","2023-05-04"); // need to wrap this or something, maybe allow service to determine shown days
     this.spacing = this.contentHeight/firstAndLast.hours;
+    let minutes=firstAndLast.hours*60;
+    let pixelsPrMinute = this.contentHeight/minutes;
+    console.log("Calculated pixel pr minute: ", pixelsPrMinute);
+    this.dataService.pixelsPrMinute = pixelsPrMinute;
+    this.dataService.firstHourAtPixel = this.spacing/2;
 
     let theHour = firstAndLast.firstHour;
+    this.dataService.firstHour = theHour;
     //this.markers=[];
     if(this.markers.length==0) {
       for(let i = 0; i< firstAndLast.hours; i++)

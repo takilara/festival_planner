@@ -9,6 +9,9 @@ export class DataService {
   bands:Band[]=[];
 
   public canvasWidth:number = -1;
+  public pixelsPrMinute:number = -1;
+  public firstHour:number=-1;
+  public firstHourAtPixel:number=-1;
 
   constructor() { }
 
@@ -39,18 +42,22 @@ export class DataService {
 
   
 
-  public getBand(bandId:string|undefined) {
+  public getBand(bandId:string|undefined):Band|undefined {
     // force running of getBands first...
     this.getBands();
     console.log("Data Service asked to find band for ",bandId);
-    var theBand = undefined;
+    var theBand!:Band;
     this.bands.forEach(b=>{
       if(b.id==bandId) {
         //return b;
         theBand=b;
       }
     });
-    console.log("Data service found: ",theBand)
-    return theBand;
+    if(theBand) {
+      console.log("Data service found: ",theBand)
+      return theBand;
+    } else {
+      return undefined;
+    }
   }
 }
