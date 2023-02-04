@@ -12,15 +12,15 @@ export const FESTIVALS: Festival[] = [
 ];
 
 export const BANDS: Band[] = [
-    { id: "1", name: 'Vreid'},
-    { id: "2", name: 'Cor Scorpii'},
-    { id: "3", name: 'Mistur'},
+    { id: "1", name: 'Vreid', genre:"Sognametall"},
+    { id: "2", name: 'Cor Scorpii', genre:"Sognametall"},
+    { id: "3", name: 'Mistur', genre:"Sognametall"},
     { id: "4", name: 'Kampfar'},
-    { id: "5", name: 'Slegest'},
+    { id: "5", name: 'Slegest', genre:"Sognametall"},
     { id: "6", name: 'Eluveitie'},
-    { id: "7", name: 'Kamelot'},
-    { id: "8", name: 'Solstafir'},
-    { id: "9", name: 'Rotting Christ'},
+    { id: "7", name: 'Kamelot', genre:"Power metal"},
+    { id: "8", name: 'Solstafir', genre:"Post metal"},
+    { id: "9", name: 'Rotting Christ', genre: "Black metal"},
     { id: "10", name: 'Bloodred Hourglass'},
     { id: "11", name: 'Bloodbound'},
     { id: "12", name: 'Evig Natt'},

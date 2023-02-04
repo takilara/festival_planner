@@ -1,4 +1,5 @@
 <div class="concertEntry" id="concert-{{concert?.concert?.id}}">
     <p>{{concert!.concert!.start_time}} {{band?.name}}</p>
+    <p *ngIf="band?.genre">({{band?.genre}})</p>
     <!-- <p>Id:{{concert?.id}}</p> -->
 </div>

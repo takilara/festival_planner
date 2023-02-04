@@ -22,6 +22,7 @@ export interface Festival {
 export interface Band {
     id?:string;
     name: string;
+    genre?: string;
 }
 
 export interface Venue {
