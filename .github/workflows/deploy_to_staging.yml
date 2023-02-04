@@ -23,4 +23,4 @@ jobs:
         npm install
     - name: Publish to Github Pages
       run: |
-        ng deploy --base-href=/festival_planner/
+        npm run build -- --prod
