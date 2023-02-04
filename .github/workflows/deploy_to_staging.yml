@@ -13,7 +13,7 @@ jobs:
     - name: Publish to Github Pages
       uses: AhsanAyaz/angular-deploy-gh-pages-actions@0e4f1a953d00116ca38fbf1bcdb37f91923015ef
       with:
-        github_access_token: ${{ secrets.GITHUB_PAGES_TOKEN }} # see the Configuration section for how you can create secrets
+        github_access_token: ${{ secrets.PAT_DEPLOY_TO_PAGES }} # see the Configuration section for how you can create secrets
         build_configuration: production # The build environment for the app. please look configurations in your angular.json
         base_href: /festival_planner/   # make sure this corresponds to https://<your_username>.github.io/<base_href>/
         deploy_branch: gh-pages # The branch the action should deploy to.
