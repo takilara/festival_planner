@@ -47,7 +47,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   days = [
-    "Thursday","Friday",
+    "Thursday",
+    "Friday",
     "Saturday"
   ];
 
