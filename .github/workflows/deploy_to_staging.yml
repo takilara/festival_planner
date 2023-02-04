@@ -18,8 +18,9 @@ jobs:
       with:
         token: ${{ secrets.PAT_DEPLOY_TO_PAGES }}
         node-version: 16
+    - name: Install
+      run: |
+        npm install
     - name: Publish to Github Pages
       run: |
-        npm run build 
-        npm install
         ng deploy --base-href=/festival_planner/
