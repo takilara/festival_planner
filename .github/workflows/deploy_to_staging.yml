@@ -10,6 +10,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.PAT_DEPLOY_TO_PAGES }}
     - name: Publish to Github Pages
       uses: AhsanAyaz/angular-deploy-gh-pages-actions@0e4f1a953d00116ca38fbf1bcdb37f91923015ef
       with:
