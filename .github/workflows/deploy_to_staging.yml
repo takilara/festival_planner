@@ -20,4 +20,5 @@ jobs:
         node-version: 16
     - name: Publish to Github Pages
       run: |
+        npm run build 
         ng deploy --base-href=/festival_planner/
