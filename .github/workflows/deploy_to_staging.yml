@@ -21,6 +21,14 @@ jobs:
     - name: Install
       run: |
         npm install
-    - name: Publish to Github Pages
+    - name: Build application
       run: |
         npm run build --
+
+    - name: Deploy
+      if: success()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.PAT_DEPLOY_TO_PAGES }}
+        publish_dir: dist/festival-planner
+        enable_jekyll: true
