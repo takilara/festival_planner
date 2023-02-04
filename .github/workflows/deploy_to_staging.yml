@@ -11,9 +11,13 @@ jobs:
       PERSONAL_TOKEN: ${{ secrets.PAT_DEPLOY_TO_PAGES }}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         token: ${{ secrets.PAT_DEPLOY_TO_PAGES }}
+    - uses: actions/setup-node@v3
+      with:
+        token: ${{ secrets.PAT_DEPLOY_TO_PAGES }}
+        node-version: 16
     - name: Publish to Github Pages
       run: |
         ng deploy --base-href=/festival_planner/
