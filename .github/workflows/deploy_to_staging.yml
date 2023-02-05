@@ -23,12 +23,14 @@ jobs:
         npm install
     - name: Build application
       run: |
-        npm run build --
+        npm run build -- --output-path docs --base-href /festival_planner/
+        cp docs/index.html docs/404.html
 
     - name: Deploy
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.PAT_DEPLOY_TO_PAGES }}
-        publish_dir: dist/festival-planner
-        enable_jekyll: true
+        #publish_dir: dist/festival-planner
+        publish_dir: docs
+        
