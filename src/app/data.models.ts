@@ -23,6 +23,7 @@ export interface Band {
     id?:string;
     name: string;
     genre?: string;
+    country?: string;
 }
 
 export interface Venue {
