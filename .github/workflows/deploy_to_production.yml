@@ -1,0 +1,15 @@
+name: Deploy to k8s cluster
+on:
+  workflow_dispatch:
+jobs:
+  rollout-redeploy:
+    runs-on: self-hosted
+    env: 
+      PERSONAL_TOKEN: ${{ secrets.PAT_DEPLOY_TO_PAGES }}
+
+    steps:
+    - name: Deploy
+      run: |
+        /snap/bin/microk8s kubectl rollout restart deployment festival-planner-deployment
+        
+        
