@@ -49,7 +49,7 @@ export class TimeComponent implements AfterViewInit, OnInit, OnDestroy {
     this.lineWidth = this.dataService.canvasWidth - 10;
     //this.lineWidth =  this.dayContainer.nativeElement.offsetWidth - this.contentWidth - 10;
     if(this.lineWidth<0) {
-      this.lineWidth = window.innerWidth;
+      this.lineWidth = window.innerWidth - this.contentWidth - 10;
     }
     console.log("Canvas Width:",this.dataService.canvasWidth);
     console.log("line width",this.lineWidth);
