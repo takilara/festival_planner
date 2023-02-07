@@ -1,7 +1,8 @@
 <div class="concertEntry" id="concert-{{concert?.concert?.id}}">
     <div class="concertEntry concertheader">
         <span class="concertEntry concertheader starttime">{{concert!.concert!.start_time}} {{band?.name}}</span> <span class="concertEntry concertheader country" *ngIf="band?.country">({{band?.country}})</span>
-        <span class="concertEntry concertheader starsymbol">*</span>
+        <span class="concertEntry concertheader starsymbol"><input id="star2" class="star" type="checkbox" title="bookmark page" 
+            [checked]="fav" (change)="checkFav(fav?'A':'B')" /></span>
     </div>
     <div *ngIf="band?.genre" class="concertEntry main">
         ({{band?.genre}})

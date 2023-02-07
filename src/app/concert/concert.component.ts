@@ -11,10 +11,19 @@ import { ConcertElement } from '../venue/venue.component';
 })
 export class ConcertComponent implements OnInit{
   @Input("concert") concert?:ConcertElement;
+  @Input("fav") fav?:boolean;
   //@Input("obj") obj?:ConcertElement;
 //  @Input("band") band?:Band;
   
 
+  checkFav(event: any) {
+    console.log("checkval");
+    console.log(event);
+    this.fav = ! this.fav;
+    this.dataService.setFavouriteConcert("someuser",this.concert?.concert.id!,this.fav);
+  }
+
+  //fav: boolean=false;
   band?:Band;
   height?:number=300;
   top:number=Math.floor(Math.random() * (500 - 0 + 1) + 0)

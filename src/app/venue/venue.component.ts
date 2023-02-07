@@ -8,6 +8,7 @@ export interface ConcertElement {
   concert: Concert;
   top: number;
   height: number;
+  fav?:boolean;
 };
 
 @Component({
@@ -60,18 +61,18 @@ export class VenueComponent implements OnInit, AfterViewInit{
         this.myConcerts.push({concert:c, band:band});
         let a = c.start_time!.split(":")
         let minutesFromFirst = (parseInt(a[0])-this.dataService.firstHour)*60+parseInt(a[1]);
-        
 
-
-        this.concertElements.push(
-          {
+        let elem:ConcertElement = {
             band:band, 
             concert:c, 
             height: c.duration*this.pixelsPrMinute,
             top: (minutesFromFirst*this.pixelsPrMinute) + this.dataService.firstHourAtPixel
-            //top:0
-          }
-        );
+        }
+        if( this.dataService.getFavouriteConcerts("someuser").indexOf(c.id!)>-1) {
+          elem.fav=true;
+        }
+
+        this.concertElements.push(elem);
 
       }
     });
@@ -90,6 +91,11 @@ export class VenueComponent implements OnInit, AfterViewInit{
                //"width": this.contentWidth
              }
         c.rescale(element);
+        //c.fav=true;
+        if( this.dataService.getFavouriteConcerts("someuser").indexOf(c.concert!.concert!.id!)>-1) {
+          c.fav=true;
+          //c.concert!.fav=true;
+        }
         i += 1;
       });
   }

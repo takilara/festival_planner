@@ -4,6 +4,7 @@
         <app-concert
          *ngFor="let concert of concertElements"
          [concert]='concert'
+         [fav]="concert.fav"
          [style.height.px]="concert.height"
          [style.top.px]="concert.top"
         ></app-concert>

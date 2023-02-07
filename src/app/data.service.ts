@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Band, Concert, Venue } from './data.models';
-import { VENUES, BANDS, CONCERTS } from './mock-data';
+import { VENUES, BANDS, CONCERTS, FAVOURITEBANDS, FAVOURITECONCERTS } from './mock-data';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class DataService {
   public pixelsPrMinute:number = -1;
   public firstHour:number=-1;
   public firstHourAtPixel:number=-1;
+  private _favouriteConcerts:string[] = FAVOURITECONCERTS;
 
   constructor() { }
 
@@ -27,6 +28,32 @@ export class DataService {
   public getConcerts():Concert[] {
     return CONCERTS;
   }
+
+  public getFavouriteBands(user:string):string[] {
+    return FAVOURITEBANDS;
+  }
+
+  public getFavouriteConcerts(user:string):string[] {
+    //return FAVOURITECONCERTS;
+    return this._favouriteConcerts;
+  }
+
+  public setFavouriteConcert(user:string, concert_id:string,fav:boolean) {
+    console.log("Store fav!")
+    if(!fav) {
+      let newFav:string[] = [];
+      this._favouriteConcerts.forEach(c=>{
+        if(c!=concert_id) {
+          newFav.push(c);
+        }
+      });
+      this._favouriteConcerts = newFav;
+      // remove from FAVOURITECONCERTS;
+    } else {
+      this._favouriteConcerts.push(concert_id);
+    }
+  }
+
 
   public getFirstAndLastHourForAFestivalDay(festival_id:string, date:string) {
     // return object that contains first and last hour for a date
