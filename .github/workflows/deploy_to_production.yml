@@ -1,6 +1,8 @@
 name: Deploy to k8s cluster
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["build-and-publish-container"]
 jobs:
   rollout-redeploy:
     runs-on: self-hosted
